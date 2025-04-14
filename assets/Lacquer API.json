@@ -1,0 +1,810 @@
+{
+	"info": {
+		"_postman_id": "84b6124a-ac9a-4c89-b2d0-f6f0769dc27f",
+		"name": "Lacquer API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40626436"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"kev\",\n    \"email\":\"kevinnitrog@duck.com\",\n    \"password\":\"hen123123\",\n    \"authProvider\":\"local\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lacquer.up.railway.app/auth/register",
+							"protocol": "https",
+							"host": [
+								"lacquer",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"huynhchihen2005@gmail.com\",\n    \"password\":\"hen123123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lacquer.up.railway.app/auth/login",
+							"protocol": "https",
+							"host": [
+								"lacquer",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Resend veri",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"huynhchihen2005@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lacquer.up.railway.app/auth/resend",
+							"protocol": "https",
+							"host": [
+								"lacquer",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"auth",
+								"resend"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2U2NGNiMmRlODkxNWE1NjUzOTA3ZjEiLCJpYXQiOjE3NDMyNDEyNzUsImV4cCI6MTc0Mzg0NjA3NX0.V45lUUUd4MdzxPnVtiCUTI35IBgs9iA6VyMcZJgS-w0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\":\"ae74066fdf499df464453c1add4470bd989d21a93183246d4188486da71fdd61\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lacquer.up.railway.app/redirect/verify?token=ae74066fdf499df464453c1add4470bd989d21a93183246d4188486da71fdd61",
+							"protocol": "https",
+							"host": [
+								"lacquer",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"redirect",
+								"verify"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "ae74066fdf499df464453c1add4470bd989d21a93183246d4188486da71fdd61"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2U2NGNiMmRlODkxNWE1NjUzOTA3ZjEiLCJpYXQiOjE3NDMyNDEyNzUsImV4cCI6MTc0Mzg0NjA3NX0.V45lUUUd4MdzxPnVtiCUTI35IBgs9iA6VyMcZJgS-w0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://lacquer.up.railway.app/auth/profile",
+							"protocol": "https",
+							"host": [
+								"lacquer",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"auth",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2U2NGNiMmRlODkxNWE1NjUzOTA3ZjEiLCJpYXQiOjE3NDMzMTY1ODMsImV4cCI6MTc0MzkyMTM4M30.H32JiXyjZK7W_t3Votiwhw7G5rPp1wofhwshFB-jjkY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"hen2\",\n    \"password\":\"hen123123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lacquer.up.railway.app/auth/profile",
+							"protocol": "https",
+							"host": [
+								"lacquer",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"auth",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2RlNWUzNzI5OGVjNTUzMWE4ZWJhZDIiLCJpYXQiOjE3NDMwNjgxNzIsImV4cCI6MTc0MzY3Mjk3Mn0.5evFwnmPCjOLIeqY6qy6cyobl8q1BxvcmqCSQGB4wMg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lacquer.up.railway.app/auth/delete",
+							"protocol": "https",
+							"host": [
+								"lacquer",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"auth",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forgot password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"huynhchihen2005@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lacquer.up.railway.app/auth/forgot",
+							"protocol": "https",
+							"host": [
+								"lacquer",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"auth",
+								"forgot"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"newPassword\":\"hen123123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lacquer.up.railway.app/redirect/reset?token=",
+							"protocol": "https",
+							"host": [
+								"lacquer",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"redirect",
+								"reset"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "google sign in",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "chatbot",
+			"item": [
+				{
+					"name": "Ask chatbot",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"prompt\":\"What is Hue City\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lacquer.up.railway.app/chatbot",
+							"protocol": "https",
+							"host": [
+								"lacquer",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"chatbot"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "random",
+			"item": [
+				{
+					"name": "get random word vietnamese",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lacquer.up.railway.app/random?difficulty=intermediate",
+							"protocol": "https",
+							"host": [
+								"lacquer",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"random"
+							],
+							"query": [
+								{
+									"key": "difficulty",
+									"value": "intermediate",
+									"description": "easy\nintermediate\nhard\nTOEIC\nIELTS"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get random word english",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "search",
+			"item": [
+				{
+					"name": "search english vocab",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://lacquer.up.railway.app/search?word=pussy",
+							"protocol": "https",
+							"host": [
+								"lacquer",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "word",
+									"value": "pussy"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "gợi ý search tiếng anh",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://lacquer.up.railway.app/search/suggest?q=pus",
+							"protocol": "https",
+							"host": [
+								"lacquer",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"search",
+								"suggest"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "pus"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search vietnamses vocab",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "gợi ý search tiếng việt",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "search gần đúng tiếng anh",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "search gần đúng tiếng anh",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "translate",
+			"item": [
+				{
+					"name": "translate a sentence",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"englishText\":\"Quoc Hai is a happy and gay boy\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lacquer.up.railway.app/translate",
+							"protocol": "https",
+							"host": [
+								"lacquer",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"translate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Deck",
+			"item": [
+				{
+					"name": "get user all deck",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2U2NGNiMmRlODkxNWE1NjUzOTA3ZjEiLCJpYXQiOjE3NDMzMTY1ODMsImV4cCI6MTc0MzkyMTM4M30.H32JiXyjZK7W_t3Votiwhw7G5rPp1wofhwshFB-jjkY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://lacquer.up.railway.app/deck",
+							"protocol": "https",
+							"host": [
+								"lacquer",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"deck"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create a deck",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2U2NGNiMmRlODkxNWE1NjUzOTA3ZjEiLCJpYXQiOjE3NDMzMTY1ODMsImV4cCI6MTc0MzkyMTM4M30.H32JiXyjZK7W_t3Votiwhw7G5rPp1wofhwshFB-jjkY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Interesting things\",\n  \"description\": \"things I love.\",\n  \"img\": \"https://media.cntraveller.com/photos/675af9fb7209e2e2f7be7abb/16:9/w_2580%2Cc_limit/Hanoi%2520-%2520GettyImages-2157440310.jpg\",\n  \"cards\": [\"67c65e7d0eb0022ee80c6333\", \"67c65e600eb0022ee80bd4a2\",\"67c65e140eb0022ee80b5569\",\"67c65e0e0eb0022ee80b50ec\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lacquer.up.railway.app/deck",
+							"protocol": "https",
+							"host": [
+								"lacquer",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"deck"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get deck by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://lacquer.up.railway.app/deck/67e7bf8d833ffe8be3ce5483",
+							"protocol": "https",
+							"host": [
+								"lacquer",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"deck",
+								"67e7bf8d833ffe8be3ce5483"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit deck",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2U2NGNiMmRlODkxNWE1NjUzOTA3ZjEiLCJpYXQiOjE3NDMzMTY1ODMsImV4cCI6MTc0MzkyMTM4M30.H32JiXyjZK7W_t3Votiwhw7G5rPp1wofhwshFB-jjkY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"common pets 2\",\n    \"description\": \"Common animals at home 2\",\n    \"img\": \"https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_3x2.jpg\",\n    \"cards\": [\"67c65dab0eb0022ee80aede3\", \"67c65dbc0eb0022ee80b0725\",\"67c65dd00eb0022ee80b227a\", \"67c65da50eb0022ee80ae584\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lacquer.up.railway.app/deck/67e7bf8d833ffe8be3ce5483",
+							"protocol": "https",
+							"host": [
+								"lacquer",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"deck",
+								"67e7bf8d833ffe8be3ce5483"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete deck",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2U2NGNiMmRlODkxNWE1NjUzOTA3ZjEiLCJpYXQiOjE3NDMzMTY1ODMsImV4cCI6MTc0MzkyMTM4M30.H32JiXyjZK7W_t3Votiwhw7G5rPp1wofhwshFB-jjkY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://lacquer.up.railway.app/deck/67e8f3e11863f545ab8eb84d",
+							"protocol": "https",
+							"host": [
+								"lacquer",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"deck",
+								"67e8f3e11863f545ab8eb84d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add card to deck",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2U2NGNiMmRlODkxNWE1NjUzOTA3ZjEiLCJpYXQiOjE3NDMzMTY1ODMsImV4cCI6MTc0MzkyMTM4M30.H32JiXyjZK7W_t3Votiwhw7G5rPp1wofhwshFB-jjkY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cardId\":\"67c65e050eb0022ee80b4daf\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lacquer.up.railway.app/deck/67e7bf8d833ffe8be3ce5483/cards",
+							"protocol": "https",
+							"host": [
+								"lacquer",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"deck",
+								"67e7bf8d833ffe8be3ce5483",
+								"cards"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove a card from a deck",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2U2NGNiMmRlODkxNWE1NjUzOTA3ZjEiLCJpYXQiOjE3NDMzMTY1ODMsImV4cCI6MTc0MzkyMTM4M30.H32JiXyjZK7W_t3Votiwhw7G5rPp1wofhwshFB-jjkY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://lacquer.up.railway.app/deck/67e7bf8d833ffe8be3ce5483/cards/67c65e050eb0022ee80b4daf",
+							"protocol": "https",
+							"host": [
+								"lacquer",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"deck",
+								"67e7bf8d833ffe8be3ce5483",
+								"cards",
+								"67c65e050eb0022ee80b4daf"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
