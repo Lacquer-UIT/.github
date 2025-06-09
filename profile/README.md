@@ -40,76 +40,128 @@ Download it before Gen Alpha starts gatekeeping Vietnamese culture =)))
 
 ```mermaid
 erDiagram
-    User ||--o{ Post : "creates"
-    User ||--o{ Friendship : "requests/receives"
-    User ||--o{ Badge : "earns"
-    User ||--o{ Chat : "participates in"
-    User ||--o{ Message : "sends"
-    User ||--o{ Deck : "owns"
-    Chat ||--o{ Message : "contains"
-    Deck ||--o{ Dictionary : "contains cards from"
-
-    Dictionary {
-        string word
-        array pronunciations
-        array img
-        array meanings
-    }
-
     User {
-        string username
-        string email
-        string passwordHash
-        string avatar
-        string authProvider
-        string googleId
-        boolean isVerified
-        string verificationToken
-        array badges
-        array friendships
+        ObjectId _id PK
+        String username
+        String email UK
+        String passwordHash
+        String avatar
+        String authProvider
+        String googleId
+        Boolean isVerified
+        String verificationToken
+        ObjectId[] badges FK
+        ObjectId[] friendships FK
+        String about
+        DateTime createdAt
+        DateTime updatedAt
     }
-
-    Post {
-        ObjectId owner
-        string imageUrl
-        string caption
-        array visibleTo
-        array reactions
-    }
-
-    Friendship {
-        ObjectId requester
-        ObjectId recipient
-        string status
-    }
-
     Badge {
-        string name
-        string iconUrl
+        ObjectId _id PK
+        String name
+        String iconUrl
+        DateTime createdAt
+        DateTime updatedAt
     }
-
+    Friendship {
+        ObjectId _id PK
+        ObjectId requester FK
+        ObjectId recipient FK
+        String status
+        ObjectId blocker FK
+        DateTime createdAt
+        DateTime updatedAt
+    }
+    Post {
+        ObjectId _id PK
+        ObjectId owner FK
+        String imageUrl
+        String caption
+        ObjectId[] visibleTo FK
+        Object[] reactions
+        DateTime createdAt
+        DateTime updatedAt
+    }
     Chat {
-        boolean isGroup
-        string name
-        string avatar
-        array participants
-        array admins
+        ObjectId _id PK
+        Boolean isGroup
+        String name
+        String avatar
+        ObjectId[] participants FK
+        ObjectId[] admins FK
+        DateTime createdAt
+        DateTime updatedAt
     }
-
     Message {
-        ObjectId chat
-        ObjectId sender
-        string text
-        array readBy
+        ObjectId _id PK
+        ObjectId chat FK
+        ObjectId sender FK
+        String text
+        ObjectId[] readBy FK
+        DateTime createdAt
+        DateTime updatedAt
     }
-
     Deck {
-        string owner
-        string title
-        string description
-        string img
-        array tags
-        array cards
+        ObjectId _id PK
+        String owner
+        String title
+        String description
+        String img
+        Boolean isDone
+        ObjectId[] tags FK
+        ObjectId[] cards FK
+        DateTime createdAt
+        DateTime updatedAt
     }
+    Tag {
+        ObjectId _id PK
+        String name UK
+        String description
+        DateTime createdAt
+        DateTime updatedAt
+    }
+    Dictionary {
+        ObjectId _id PK
+        String word
+        String pronunciation
+        String[] img
+        Object[] wordTypes
+        String difficulty
+        Object[] examples
+    }
+    DictionaryVn {
+        ObjectId _id PK
+        String word
+        String[] pronunciations
+        String[] img
+        Object[] meanings
+    }
+    Chatbothistory {
+        ObjectId _id PK
+        String userId
+        Object[] history
+        DateTime createdAt
+        DateTime updatedAt
+    }
+    User ||--o{ Badge : "has many badges"
+    User ||--o{ Friendship : "has many friendships"
+    User ||--o{ Post : "owns posts"
+    User ||--o{ Chat : "participates in chats"
+    User ||--o{ Message : "sends messages"
+    Friendship }o--|| User : "requester"
+    Friendship }o--|| User : "recipient"
+    Friendship }o--o| User : "blocker"
+    Post }o--|| User : "owned by user"
+    Post }o--o{ User : "visible to users"
+    Chat ||--o{ Message : "contains messages"
+    Chat }o--o{ User : "has participants"
+    Chat }o--o{ User : "has admins"
+    Message }o--|| Chat : "belongs to chat"
+    Message }o--|| User : "sent by user"
+    Message }o--o{ User : "read by users"
+    Deck }o--o{ Tag : "has tags"
+    Deck }o--o{ Dictionary : "contains cards"
+    Chatbothistory }o--|| User : "belongs to user (via userId)"
+
 ```
 
