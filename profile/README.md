@@ -165,3 +165,228 @@ erDiagram
 
 ```
 
+## 💽 UML
+```mermaid
+classDiagram
+    class User {
+        -ObjectId _id
+        -String username
+        -String email
+        -String passwordHash
+        -String avatar
+        -String authProvider
+        -String googleId
+        -Boolean isVerified
+        -String verificationToken
+        -ObjectId[] badges
+        -ObjectId[] friendships
+        -String about
+        -DateTime createdAt
+        -DateTime updatedAt
+        +save()
+        +getQR()
+        +resetPassword()
+        +verify()
+        +findById()
+        +findByEmail()
+    }
+
+    class Badge {
+        -ObjectId _id
+        -String name
+        -String iconUrl
+        -DateTime createdAt
+        -DateTime updatedAt
+        +save()
+        +findById()
+    }
+
+    class Friendship {
+        -ObjectId _id
+        -ObjectId requester
+        -ObjectId recipient
+        -String status
+        -ObjectId blocker
+        -DateTime createdAt
+        -DateTime updatedAt
+        +save()
+        +findById()
+        +updateStatus()
+    }
+
+    class Post {
+        -ObjectId _id
+        -ObjectId owner
+        -String imageUrl
+        -String caption
+        -ObjectId[] visibleTo
+        -Reaction[] reactions
+        -DateTime createdAt
+        -DateTime updatedAt
+        +save()
+        +addReaction()
+        +removeReaction()
+    }
+
+    class Reaction {
+        -ObjectId user
+        -String emoji
+    }
+
+    class Chat {
+        -ObjectId _id
+        -Boolean isGroup
+        -String name
+        -String avatar
+        -ObjectId[] participants
+        -ObjectId[] admins
+        -DateTime createdAt
+        -DateTime updatedAt
+        +save()
+        +addParticipant()
+        +removeParticipant()
+    }
+
+    class Message {
+        -ObjectId _id
+        -ObjectId chat
+        -ObjectId sender
+        -String text
+        -ObjectId[] readBy
+        -DateTime createdAt
+        -DateTime updatedAt
+        +save()
+        +markAsRead()
+    }
+
+    class Deck {
+        -ObjectId _id
+        -String owner
+        -String title
+        -String description
+        -String img
+        -Boolean isDone
+        -ObjectId[] tags
+        -ObjectId[] cards
+        -DateTime createdAt
+        -DateTime updatedAt
+        +save()
+        +addCard()
+        +removeCard()
+        +addTag()
+    }
+
+    class Tag {
+        -ObjectId _id
+        -String name
+        -String description
+        -DateTime createdAt
+        -DateTime updatedAt
+        +save()
+        +findByName()
+    }
+
+    class Dictionary {
+        -ObjectId _id
+        -String word
+        -String pronunciation
+        -String[] img
+        -WordType[] wordTypes
+        -String difficulty
+        -Example[] examples
+        +save()
+        +findByWord()
+        +searchByDifficulty()
+    }
+
+    class WordType {
+        -String type
+        -String[] definitions
+    }
+
+    class Example {
+        -String phrase
+        -String translation
+    }
+
+    class DictionaryVn {
+        -ObjectId _id
+        -String word
+        -String[] pronunciations
+        -String[] img
+        -Meaning[] meanings
+        +save()
+        +findByWord()
+    }
+
+    class Meaning {
+        -PartOfSpeech part_of_speech
+        -Definition[] definitions
+    }
+
+    class PartOfSpeech {
+        -String type
+    }
+
+    class Definition {
+        -String text
+        -Example[] examples
+    }
+
+    class Chatbothistory {
+        -ObjectId _id
+        -String userId
+        -HistoryEntry[] history
+        -DateTime createdAt
+        -DateTime updatedAt
+        +save()
+        +addEntry()
+        +clearHistory()
+    }
+
+    class HistoryEntry {
+        -String role
+        -MessagePart[] parts
+    }
+
+    class MessagePart {
+        -String text
+    }
+
+    User "1" --> "*" Badge : has
+    User "1" --> "*" Friendship : participates
+    User "1" --> "*" Post : owns
+    User "*" --> "*" Chat : participates
+    User "1" --> "*" Message : sends
+    User "1" --> "1" Chatbothistory : has
+
+    Friendship --> User : requester
+    Friendship --> User : recipient
+    Friendship --> User : blocker
+
+    Post --> User : owner
+    Post --> User : visibleTo
+    Post "1" *-- "*" Reaction : contains
+
+    Chat "1" --> "*" Message : contains
+    Chat "*" --> "*" User : participants
+    Chat "*" --> "*" User : admins
+
+    Message --> Chat : belongsTo
+    Message --> User : sender
+    Message --> User : readBy
+
+    Deck "*" --> "*" Tag : taggedWith
+    Deck "*" --> "*" Dictionary : contains
+
+    Dictionary "1" *-- "*" WordType : has
+    Dictionary "1" *-- "*" Example : contains
+
+    DictionaryVn "1" *-- "*" Meaning : has
+    Meaning "1" *-- "1" PartOfSpeech : has
+    Meaning "1" *-- "*" Definition : contains
+    Definition "1" *-- "*" Example : has
+
+    Chatbothistory "1" *-- "*" HistoryEntry : contains
+    HistoryEntry "1" *-- "*" MessagePart : has
+```
